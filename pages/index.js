@@ -1,12 +1,8 @@
 import Head from 'next/head';
 import { PostCard, Categories, PostWidget, Layout } from '../components';
+import { getPosts } from '../services';
 
-const posts = [
-  { title: 'React Testing', excerpt: 'Learn React Testing' },
-  { title: 'React with Tailwind', excerpt: 'Learn React with Tailwind' }
-];
-
-const Home = () => {
+export default function Home({ posts }) {
   return (
     <div className="container mx-auto mb-8 px-10">
       <Head>
@@ -28,6 +24,11 @@ const Home = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Home;
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+  return {
+    props: { posts }
+  };
+}
