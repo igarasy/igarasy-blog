@@ -10,7 +10,7 @@ const PostCard = ({ post }) => {
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
         <img
           src={post.featuredImage.url}
-          alt=""
+          alt={post.title}
           className="absolute h-80 w-full rounded-t-lg object-cover  object-top shadow-lg lg:rounded-lg"
         />
       </div>
